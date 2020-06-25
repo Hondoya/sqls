@@ -18,7 +18,8 @@
     while($row = mysqli_fetch_array($result)){
         print_r($row);
     }
-//ここまでLec126 where clause と while による複数データの取り出し
+//ここまでLec126 where clause と while による複数データの取り出し.
+//アップデート用の仮の修正
  /*
     echo "<p>あなたのメールアドレスは ".$row['email'].", パスワードは".$row['password']." です.</p>";
 */
