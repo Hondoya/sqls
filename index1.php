@@ -14,8 +14,15 @@
             echo "メールアドレスを入力してください";
         } elseif($_POST['password'] == ''){
             echo "パスワードを入力してください";
+        } else {
+            $query = "SELECT `id` FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
+            $result = mysqli_query($link, $query);
+            echo mysqli_num_rows($result);
+            
         }
     }
+//progress -- Lesson 129, 25 Jun
+
 /*
     $reg_str = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/";
     if(preg_match($reg_str, 'email')){
