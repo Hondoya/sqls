@@ -7,6 +7,7 @@
     }
 
 
+
     if(array_key_exists('email',$_POST) OR array_key_exists('passwords',$_POST)){
         //print_r($_POST);
         if($_POST['email'] == ''){
@@ -15,7 +16,6 @@
             echo "パスワードを入力してください";
         }
     }
-
 /*
     $reg_str = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/";
     if(preg_match($reg_str, 'email')){
