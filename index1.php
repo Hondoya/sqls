@@ -16,12 +16,13 @@
             echo "パスワードを入力してください";
         } else {
             $query = "SELECT `id` FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
+            //mresを使って想定外のケースを起こしうる文字列を弾いた。
             $result = mysqli_query($link, $query);
             echo mysqli_num_rows($result);
             
         }
     }
-//progress -- Lesson 129, 25 Jun
+//progress -- Lesson 128, 30 Jun
 
 /*
     $reg_str = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/";
