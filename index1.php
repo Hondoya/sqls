@@ -18,11 +18,21 @@
             $query = "SELECT `id` FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
             //mresを使って想定外のケースを起こしうる文字列を弾いた。
             $result = mysqli_query($link, $query);
-            echo mysqli_num_rows($result);
+            if (mysqli_num_rows($result) > 0){
+                echo "そのアドレスは既に使用されています";
+            } else {
+                //未使用の場合,データをテーブルに挿入する処理を作る
+                $query = "INSERT INTO `users`　(`email`,`password`) VALUES ('".mysqli_real_escape_string($link,$_POST['email'])."','".mysqli_real_escape_string($link,$_POST['password'])."')"; 
+                if(mysqli_query($link,$query)){
+                    echo "登録が完了しました";
+                } else {
+                    echo "登録に失敗しました";
+                }
+            }
             
         }
-    }
-//progress -- Lesson 128, 30 Jun
+     }
+//progress -- Lesson 128, 30 Jun 4つのif文入れ子構造, 登録が完了できないバージョン。
 
 /*
     $reg_str = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/";
