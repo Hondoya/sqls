@@ -2,16 +2,12 @@
 
 session_start();
 
-echo $_SESSION['username'];
-
     $link = mysqli_connect("localhost","root","root","memberapp");
         //サーバー名、ユーザ名、パスワード、データベース名
 
     if(mysqli_connect_error()){
         die( "データベースへのアクセスに失敗しました");
     }
-
-
 
     if(array_key_exists('email',$_POST) OR array_key_exists('passwords',$_POST)){
         //print_r($_POST);
@@ -39,19 +35,10 @@ echo $_SESSION['username'];
             
         }
      }
-//progress -- Lesson 130, 3 Jul session variables MOD.
+//progress -- Lesson 130, 3 Jul session variables
 
 /*
-    $reg_str = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/";
-    if(preg_match($reg_str, 'email')){
-        echo "正しく入力されました"."\n";
-    }else{
-        echo "正しいメールアドレスを入力してください"."\n";
-    }
-*/
-//メールアドレスが有効化どうかの検証。true判定がされないが、何が悪いのか全然わからん。あとで。
-/*
-ユーザー登録フォームを作成する。
+ユーザー登録フォーム作成手順。
 
 1. Eメールとパスワードの入力フォーム、「登録する」ボタンを設置する
 2. データが入力されているかどうかチェックする
