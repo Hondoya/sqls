@@ -1,55 +1,10 @@
 <?php
+//Lec 133, cookie
+setcookie("customerID","1234",time() + 60 * 60 * 24);
 
-session_start();
-
-    $link = mysqli_connect("localhost","root","root","memberapp");
-        //サーバー名、ユーザ名、パスワード、データベース名
-
-    if(mysqli_connect_error()){
-        die( "データベースへのアクセスに失敗しました");
-    }
-
-    if(array_key_exists('email',$_POST) OR array_key_exists('passwords',$_POST)){
-        //print_r($_POST);
-        if($_POST['email'] == ''){
-            echo "メールアドレスを入力してください";
-        } elseif($_POST['password'] == ''){
-            echo "パスワードを入力してください";
-        } else {
-            $query = "SELECT `id` FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
-            $result = mysqli_query($link, $query);
-            if (mysqli_num_rows($result) > 0){
-                echo "そのアドレスは既に使用されています";
-            } else {
-                //未使用の場合,データをテーブルに挿入する処理を作る
-                $query = "INSERT INTO `users` (`email`,`password`) VALUES ('".mysqli_real_escape_string($link,$_POST['email'])."','".mysqli_real_escape_string($link,$_POST['password'])."')"; 
-                if(mysqli_query($link,$query)){
-                    //echo "登録が完了しました";
-                    
-                    $_SESSION['email']=$_POST['email'];
-                    header("Location: session.php");
-                } else {
-                    echo "登録に失敗しました. もう一度お試しください";
-                }
-            }
-            
-        }
-     }
-//progress -- Lesson 130, 3 Jul session variables
-
-/*
-ユーザー登録フォーム作成手順。
-
-1. Eメールとパスワードの入力フォーム、「登録する」ボタンを設置する
-2. データが入力されているかどうかチェックする
-3. メールアドレスが既出ではないかチェックする
-4. 重複がなければデータを登録（ベースデータテーブルに追加する）を実行する
-5. 登録に成功しましたというメッセージの表示
-
-*/
+echo $_COOKIE["customerID"];
 
 ?>
-
 
 <form method="post">
     <input name="email" type="text" placeholder="Email">
