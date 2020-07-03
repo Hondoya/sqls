@@ -39,7 +39,7 @@ echo $_SESSION['username'];
             
         }
      }
-//progress -- Lesson 130, 3 Jul session variables
+//progress -- Lesson 130, 3 Jul session variables MOD.
 
 /*
     $reg_str = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/";
