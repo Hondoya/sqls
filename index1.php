@@ -1,4 +1,9 @@
 <?php
+
+session_start();
+
+echo $_SESSION['username'];
+
     $link = mysqli_connect("localhost","root","root","memberapp");
         //サーバー名、ユーザ名、パスワード、データベース名
 
@@ -23,15 +28,18 @@
                 //未使用の場合,データをテーブルに挿入する処理を作る
                 $query = "INSERT INTO `users` (`email`,`password`) VALUES ('".mysqli_real_escape_string($link,$_POST['email'])."','".mysqli_real_escape_string($link,$_POST['password'])."')"; 
                 if(mysqli_query($link,$query)){
-                    echo "登録が完了しました";
+                    //echo "登録が完了しました";
+                    
+                    $_SESSION['email']=$_POST['email'];
+                    header("Location: session.php");
                 } else {
-                    echo "登録に失敗しました";
+                    echo "登録に失敗しました. もう一度お試しください";
                 }
             }
             
         }
      }
-//progress -- Lesson 128, 30 Jun 4つのif文入れ子構造, 完成版
+//progress -- Lesson 130, 3 Jul session variables MOD.
 
 /*
     $reg_str = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/";
