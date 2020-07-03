@@ -6,7 +6,6 @@ echo $_COOKIE["customerID"];
 
 ?>
 
-
 <form method="post">
     <input name="email" type="text" placeholder="Email">
     <input name="password" type="password" placeholder="Password">
